@@ -1,0 +1,19 @@
+# 공통 도메인 설정
+
+# Old API 도메인
+OLD_API_DOMAIN = "https://commerce-recommend.dev.kurly.services"
+
+# New API 도메인  
+NEW_API_DOMAIN = "https://display-home-api.dev.kurly.services"
+
+# 공통 헤더 정보
+COMMON_HEADERS = {
+    'User-Agent': 'OS/iOS (14.3) AppVersion/205.36.0 (703) Device/iPhone11,2 Kurly/2.36.0 (703) DeviceID/E979246B-1358-4EF0-9CF6-4680CB986311',
+    'X-KURLY-CLUSTER-CENTER-CODE': 'CC02',
+    'X-KURLY-DELIVERY-TYPE': 'direct',
+    'X-KURLY-MEMBER-UUID': 'f0199879-cba2-57de-92c5-9e7db9366816',
+    'X-KURLY-MEMBER-NO': '25332847',
+    'X-KURLY-CART-ID': 'd50adc30-0dfe-458e-9d14-8d2a1962ece8',
+    'X-KURLY-MASKED-ZONECODE': '123',
+    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjYXJ0X2lkIjoiZjM0YTNmYzAtNGViYi00MDU2LWE1ZDEtMmMwYzY3YTczYTFmIiwiaXNfZ3Vlc3QiOmZhbHNlLCJ1dWlkIjoiNWE5NmMyMGYtNzg2My00NTQ3LWFhYmMtNTQ5ZDhlM2E5OGQxIiwibV9ubyI6NTIwNDQ2OTEsIm1faWQiOiJqdW53b28uY2hvaUBrdXJseWNvcnAuY29tIiwibGV2ZWwiOjEwMCwic3ViIjoiNWE5NmMyMGYtNzg2My00NTQ3LWFhYmMtNTQ5ZDhlM2E5OGQxIiwiaXNzIjoiaHR0cHM6Ly9hcGkuZGV2Lmt1cmx5LnNlcnZpY2VzL3YzL2F1dGgvbG9naW4iLCJpYXQiOjE3NTkyMTEwMTYsImV4cCI6MTc1OTIxNDYxNiwibmJmIjoxNzU5MjExMDE2LCJqdGkiOiJRdGhqQ1VRYU5BSEQzblpqIn0.UPVvGJxXtDKL6oYVKFgmsbmgHHp4oCTmQsQs4yDU0u0'
+}
