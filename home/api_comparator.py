@@ -54,18 +54,41 @@ class APIComparator:
         if old_data is None or new_data is None:
             return False
         
+        # 데이터를 id 기준으로 정렬 후 비교
+        old_sorted = self._sort_data_by_id(old_data)
+        new_sorted = self._sort_data_by_id(new_data)
+        
         # JSON을 정렬된 문자열로 변환하여 비교
-        old_str = json.dumps(old_data, sort_keys=True, ensure_ascii=False)
-        new_str = json.dumps(new_data, sort_keys=True, ensure_ascii=False)
+        old_str = json.dumps(old_sorted, sort_keys=True, ensure_ascii=False)
+        new_str = json.dumps(new_sorted, sort_keys=True, ensure_ascii=False)
         return old_str == new_str
+    
+    def _sort_data_by_id(self, data: Any) -> Any:
+        """데이터를 id 기준으로 정렬"""
+        if isinstance(data, dict):
+            sorted_dict = {}
+            for key, value in data.items():
+                sorted_dict[key] = self._sort_data_by_id(value)
+            return sorted_dict
+        elif isinstance(data, list):
+            if all(isinstance(item, dict) and 'id' in item for item in data):
+                return sorted(data, key=lambda x: str(x['id']))
+            else:
+                return [self._sort_data_by_id(item) for item in data]
+        else:
+            return data
     
     def _generate_diff(self, old_data: Any, new_data: Any) -> List[str]:
         """차이점을 생성"""
         if old_data is None or new_data is None:
             return []
         
-        old_json = json.dumps(old_data, indent=2, sort_keys=True, ensure_ascii=False)
-        new_json = json.dumps(new_data, indent=2, sort_keys=True, ensure_ascii=False)
+        # 정렬된 데이터로 diff 생성
+        old_sorted = self._sort_data_by_id(old_data)
+        new_sorted = self._sort_data_by_id(new_data)
+        
+        old_json = json.dumps(old_sorted, indent=2, sort_keys=True, ensure_ascii=False)
+        new_json = json.dumps(new_sorted, indent=2, sort_keys=True, ensure_ascii=False)
         
         diff = list(difflib.unified_diff(
             old_json.splitlines(keepends=True),
